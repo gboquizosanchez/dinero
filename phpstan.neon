@@ -1,0 +1,11 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src/
+    ignoreErrors:
+        - '#PHPDoc tag @mixin contains unknown class Dinero\\[a-zA-Z0-9\\_]+\\Domain\\Models#'
+
+    level: 9

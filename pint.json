@@ -1,0 +1,19 @@
+{
+  "preset": "laravel",
+  "rules": {
+    "array_push": true,
+    "concat_space": {
+      "spacing": "one"
+    },
+    "is_null": true,
+    "no_trailing_comma_in_list_call": true,
+    "no_trailing_comma_in_singleline_array": true,
+    "psr_autoloading": true,
+    "self_accessor": true,
+    "ternary_to_null_coalescing": true,
+    "trailing_comma_in_multiline": true,
+    "declare_strict_types": true,
+    "Laravel/laravel_phpdoc_alignment": false
+  },
+  "exclude": []
+}
