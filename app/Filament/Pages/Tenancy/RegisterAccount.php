@@ -5,7 +5,6 @@ namespace App\Filament\Pages\Tenancy;
 use App\Models\Account;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Pages\Page;
 use Filament\Pages\Tenancy\RegisterTenant;
 
 class RegisterAccount extends RegisterTenant
@@ -17,9 +16,6 @@ class RegisterAccount extends RegisterTenant
         return false;
     }
 
-    /**
-     * @return string
-     */
     public static function getSlug(): string
     {
         return 'register-account';

@@ -9,7 +9,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration {
+return new class() extends Migration
+{
     public function up(): void
     {
         Schema::create($this->table(), static function (Blueprint $table) {
@@ -35,8 +36,7 @@ return new class() extends Migration {
             $table->decimal('balance', 64, 0)
                 ->default(0);
             $table->unsignedSmallInteger('decimal_places')
-                ->default(2)
-            ;
+                ->default(2);
             $table->softDeletes();
             $table->timestamps();
 

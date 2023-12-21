@@ -23,5 +23,4 @@ enum MonthEnum: string
             return $value->value;
         }, self::cases());
     }
-
 }

@@ -6,7 +6,6 @@ use App\Enums\BudgetPeriodEnum;
 use App\Enums\SpendTypeEnum;
 use App\Enums\VisibilityStatusEnum;
 use App\Filament\Resources\BudgetResource\Pages;
-use App\Filament\Resources\BudgetResource\RelationManagers;
 use App\Models\Budget;
 use Filament\Forms;
 use Filament\Forms\Components\ColorPicker;
@@ -144,7 +143,7 @@ class BudgetResource extends Resource
                     ->label(__('budgets.fields.spend_amount'))
                     ->numeric()
                     ->sortable()
-                    ->color(fn(?Model $record) => $record->spend_amount * -1 > $record->amount ? 'danger' : ''),
+                    ->color(fn (?Model $record) => $record->spend_amount * -1 > $record->amount ? 'danger' : ''),
                 Tables\Columns\IconColumn::make('status')
                     ->label(__('budgets.fields.enabled'))
                     ->icon(fn (string $state): string => match ($state) {
@@ -175,14 +174,14 @@ class BudgetResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -190,8 +189,8 @@ class BudgetResource extends Resource
             'create' => Pages\CreateBudget::route('/create'),
             'edit' => Pages\EditBudget::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

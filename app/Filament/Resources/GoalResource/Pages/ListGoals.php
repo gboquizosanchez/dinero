@@ -8,7 +8,6 @@ use App\Models\Wallet;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
@@ -48,11 +47,11 @@ class ListGoals extends ListRecords
                 ->default($type),
             Hidden::make('goal_id')
                 ->default($goalId)
-                ->visible(fn() => !is_null($goalId)),
+                ->visible(fn () => ! is_null($goalId)),
             Select::make('goal_id')
                 ->label(__('goals.fields.goal'))
                 ->options(Goal::tenant()->pluck('name', 'id')->toArray())
-                ->visible(fn() => is_null($goalId))
+                ->visible(fn () => is_null($goalId))
                 ->searchable()
                 ->required(),
             Select::make('wallet_id')
@@ -71,9 +70,9 @@ class ListGoals extends ListRecords
     {
         try {
             $wallet = Wallet::findOrFail($data['wallet_id']);
-            $amount = (double) $data['amount'];
+            $amount = (float) $data['amount'];
             $method = 'withdraw';
-            if($data['type'] == 'withdraw') {
+            if ($data['type'] == 'withdraw') {
                 $method = 'deposit';
             }
 

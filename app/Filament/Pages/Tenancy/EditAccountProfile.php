@@ -5,7 +5,6 @@ namespace App\Filament\Pages\Tenancy;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Tenancy\EditTenantProfile;
-use Illuminate\Database\Eloquent\Model;
 
 class EditAccountProfile extends EditTenantProfile
 {

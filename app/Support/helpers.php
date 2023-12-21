@@ -2,19 +2,21 @@
 
 use Illuminate\Support\Collection;
 
-function country_with_currency_and_symbol($state = null): Collection|string {
+function country_with_currency_and_symbol($state = null): Collection|string
+{
     $countries = collect(countries())->mapWithKeys(function ($country) {
         try {
             $currency = currency($country['currency']);
+
             return [
-                $country['currency'] => sprintf('%s - %s - %s (%s)',$country['name'], $currency->getCurrency(), $currency->getName(), $currency->getSymbol())
+                $country['currency'] => sprintf('%s - %s - %s (%s)', $country['name'], $currency->getCurrency(), $currency->getName(), $currency->getSymbol()),
             ];
         } catch (\Exception $e) {
             return [null => null];
         }
     })->filter();
 
-    if($state) {
+    if ($state) {
         return $countries->get($state);
     }
 

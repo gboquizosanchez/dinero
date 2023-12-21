@@ -9,7 +9,6 @@ use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Shipu\Watchable\Traits\WatchableTrait;
@@ -63,7 +62,7 @@ class Transaction extends \Bavix\Wallet\Models\Transaction
         $filamentTenantId = optional(Filament::getTenant())->id;
         $relationShip = $this->belongsTo(Wallet::class);
 
-        if(!blank($filamentTenantId)) {
+        if (! blank($filamentTenantId)) {
             return $relationShip->where('account_id', $filamentTenantId);
         }
 
@@ -72,12 +71,12 @@ class Transaction extends \Bavix\Wallet\Models\Transaction
 
     public function onModelCreating(): void
     {
-        if(blank($this->payable_id) && filled($user = auth()->user())) {
+        if (blank($this->payable_id) && filled($user = auth()->user())) {
             $this->payable_type = User::class;
             $this->payable_id = $user->id;
         }
 
-        if(blank($this->uuid)) {
+        if (blank($this->uuid)) {
             $this->uuid = app(UuidFactoryServiceInterface::class)->uuid4();
         }
 
@@ -90,7 +89,7 @@ class Transaction extends \Bavix\Wallet\Models\Transaction
 
     public function onModelSaving(): void
     {
-        if(in_array($this->type, [TransactionTypeEnum::TRANSFER->value, TransactionTypeEnum::PAYMENT->value])) {
+        if (in_array($this->type, [TransactionTypeEnum::TRANSFER->value, TransactionTypeEnum::PAYMENT->value])) {
             $this->type = $this->getOriginal('type');
         }
         $this->meta = array_merge(($this->getOriginal('meta') ?? []), $this->meta ?? []);
@@ -99,7 +98,7 @@ class Transaction extends \Bavix\Wallet\Models\Transaction
     public function isTransferTransaction(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 return array_get($this->meta, 'transfer', false) ?? false;
             }
         );
@@ -108,7 +107,7 @@ class Transaction extends \Bavix\Wallet\Models\Transaction
     public function isPaymentTransaction(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 return array_get($this->meta, 'payment', false) ?? false;
             }
         );

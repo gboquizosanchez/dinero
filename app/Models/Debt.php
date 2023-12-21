@@ -32,10 +32,11 @@ class Debt extends Model
     public function progress(): Attribute
     {
         return Attribute::make(
-            get: function() {
-                if($this->total_debt_amount == 0) {
+            get: function () {
+                if ($this->total_debt_amount == 0) {
                     return 100;
                 }
+
                 return number_format(($this->balance / $this->total_debt_amount) * 100, 2);
             }
         );
@@ -44,8 +45,9 @@ class Debt extends Model
     public function totalDebtAmount(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 $query = $this->transactions();
+
                 return match ($this->type) {
                     DebtTypeEnum::PAYABLE->value => $query->where('type', '<>', TransactionTypeEnum::WITHDRAW->value)->sum('amount'),
                     DebtTypeEnum::RECEIVABLE->value => $query->where('type', '<>', TransactionTypeEnum::DEPOSIT->value)->sum('amount') * -1,
@@ -57,7 +59,7 @@ class Debt extends Model
     public function balance(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 $query = $this->transactions->whereNotNull('wallet_id');
 
                 $query = match ($this->type) {
@@ -102,7 +104,7 @@ class Debt extends Model
             default => null,
         };
 
-        if(!blank($method)) {
+        if (! blank($method)) {
             $this->wallet->{$method}($this->amount * 100, $meta);
         }
     }
@@ -113,14 +115,14 @@ class Debt extends Model
         $delta = $this->amount - $this->getOriginal('amount');
         $method = null;
 
-        if($delta > 0) {
+        if ($delta > 0) {
             $method = $this->type == DebtTypeEnum::RECEIVABLE->value ? 'withdraw' : 'deposit';
         } elseif ($delta != 0) {
             $delta = abs($delta);
             $method = $this->type == DebtTypeEnum::RECEIVABLE->value ? 'deposit' : 'withdraw';
         }
 
-        if(!blank($method)) {
+        if (! blank($method)) {
             $this->wallet->{$method}($delta * 100, $meta);
         }
     }

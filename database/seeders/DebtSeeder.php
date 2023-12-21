@@ -6,7 +6,6 @@ use App\Enums\DebtTypeEnum;
 use App\Models\Account;
 use App\Models\Debt;
 use App\Models\Wallet;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DebtSeeder extends Seeder

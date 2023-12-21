@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Account;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Symfony\Component\Uid\Ulid;
 
@@ -32,7 +31,7 @@ class AccountSeeder extends Seeder
                 'id' => Ulid::generate(),
                 'name' => 'Family',
                 'owner_id' => $user->id,
-            ]
+            ],
         ]);
     }
 }

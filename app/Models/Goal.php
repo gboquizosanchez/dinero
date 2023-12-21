@@ -26,7 +26,7 @@ class Goal extends Model
     public function progress(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 return $this->amount > 0 ? ($this->balance / $this->amount) * 100 : 0;
             }
         );
@@ -35,7 +35,7 @@ class Goal extends Model
     public function balance(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 return $this->transactions->sum('amount_float') * -1;
             }
         );

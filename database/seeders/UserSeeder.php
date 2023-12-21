@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     {
         User::factory()->count(1)->create([
             'name' => 'Shipu Ahamed',
-            'email' => 'demo@dinero.app'
+            'email' => 'demo@dinero.app',
         ]);
     }
 }

@@ -31,15 +31,15 @@ class Category extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 
     public function balance(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 return $this->transactions->sum('amount');
             }
         );
@@ -48,7 +48,7 @@ class Category extends Model
     public function monthlyBalance(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 return $this->transactions()->whereBetween('happened_at', [now()->startOfMonth(), now()->endOfMonth()])->sum('amount');
             }
         );

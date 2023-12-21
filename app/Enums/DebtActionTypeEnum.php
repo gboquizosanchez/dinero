@@ -24,6 +24,7 @@ enum DebtActionTypeEnum: string
             if (in_array($value->value, $except)) {
                 return null;
             }
+
             return $value->value;
         }, self::cases()));
     }

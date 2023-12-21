@@ -1,8 +1,5 @@
 <?php
 
-use App\Enums\SpendTypeEnum;
-use App\Enums\VisibilityStatusEnum;
-
 return [
     'title' => 'Goals',
     'title_singular' => 'Goal',

@@ -51,7 +51,7 @@ class Wallet extends BaseWallet
 
     public function onModelSaving(): void
     {
-        if(filled(auth()->user())) {
+        if (filled(auth()->user())) {
             $this->holder_type = User::class;
             $this->holder_id = auth()->user()->id;
         }
@@ -63,12 +63,12 @@ class Wallet extends BaseWallet
     public function onModelCreated(): void
     {
         $amount = $this->meta['initial_balance'] ?? 0;
-        if($this->type == WalletTypeEnum::CREDIT_CARD->value) {
+        if ($this->type == WalletTypeEnum::CREDIT_CARD->value) {
             $amount = $this->meta['total_due'] ?? 0;
-            if($amount > 0) {
+            if ($amount > 0) {
                 $this->withdraw($amount, ['description' => 'Initial credit card due']);
             }
-        } elseif($amount > 0) {
+        } elseif ($amount > 0) {
             $this->deposit($amount, ['description' => 'Initial balance']);
         }
     }

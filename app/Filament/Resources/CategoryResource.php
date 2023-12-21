@@ -73,8 +73,8 @@ class CategoryResource extends Resource
                             ->afterStateHydrated(function (Toggle $component, string $state) {
                                 $component->state($state == VisibilityStatusEnum::ACTIVE->value);
                             })
-                            ->dehydrateStateUsing(fn (string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value)
-                    ])
+                            ->dehydrateStateUsing(fn (string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value),
+                    ]),
             ]);
     }
 
@@ -146,23 +146,23 @@ class CategoryResource extends Resource
                 Tables\Actions\CreateAction::make()->slideOver(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
-            TransactionsRelationManager::class
+            TransactionsRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListCategories::route('/'),
-//            'create' => Pages\CreateCategory::route('/create'),
-//            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            //            'create' => Pages\CreateCategory::route('/create'),
+            //            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

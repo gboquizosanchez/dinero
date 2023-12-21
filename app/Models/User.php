@@ -39,7 +39,7 @@ class User extends Authenticatable implements HasAvatar, HasTenants, HasDefaultT
         'email',
         'password',
         'avatar_url',
-        'latest_account_id'
+        'latest_account_id',
     ];
 
     /**

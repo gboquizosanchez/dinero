@@ -7,7 +7,6 @@ use App\Enums\DebtTypeEnum;
 use App\Enums\TransactionTypeEnum;
 use App\Filament\Resources\DebtResource;
 use App\Models\Debt;
-use App\Models\Goal;
 use App\Models\User;
 use App\Models\Wallet;
 use Bavix\Wallet\Internal\Service\UuidFactoryServiceInterface;
@@ -64,26 +63,26 @@ class ListDebts extends ListRecords
         return [
             Hidden::make('debt_id')
                 ->default($debtId)
-                ->visible(fn() => !is_null($debtId)),
+                ->visible(fn () => ! is_null($debtId)),
             Select::make('debt_id')
                 ->label(__('debts.fields.debt'))
                 ->options(Debt::tenant()->pluck('name', 'id')->toArray())
-                ->visible(fn() => is_null($debtId))
+                ->visible(fn () => is_null($debtId))
                 ->searchable()
                 ->live()
                 ->required(),
             Select::make('action_type')
                 ->label(__('debts.fields.action_type'))
                 ->options(function (Get $get) {
-                    if(blank($get('debt_id'))) {
+                    if (blank($get('debt_id'))) {
                         return [];
                     }
 
                     $debt = Debt::findOrFail($get('debt_id'));
 
-                    return __('debts.action_types.' . $debt->type);
+                    return __('debts.action_types.'.$debt->type);
                 })
-                ->searchable(fn(Get $get) => !blank($get('debt_id')))
+                ->searchable(fn (Get $get) => ! blank($get('debt_id')))
                 ->live()
                 ->required(),
             Select::make('wallet_id')
@@ -91,7 +90,7 @@ class ListDebts extends ListRecords
                 ->options(Wallet::tenant()->pluck('name', 'id')->toArray())
                 ->searchable()
                 ->required()
-                ->visible(fn(Get $get) => !in_array($get('action_type'), [DebtActionTypeEnum::LOAN_INTEREST->value, DebtActionTypeEnum::DEBT_INTEREST->value])),
+                ->visible(fn (Get $get) => ! in_array($get('action_type'), [DebtActionTypeEnum::LOAN_INTEREST->value, DebtActionTypeEnum::DEBT_INTEREST->value])),
             DateTimePicker::make('happened_at')
                 ->label(__('debts.fields.happened_at'))
                 ->default(now()),
@@ -105,7 +104,7 @@ class ListDebts extends ListRecords
     public function makeDebtTransaction($data): void
     {
         try {
-            $amount = (double) $data['amount'];
+            $amount = (float) $data['amount'];
             $actionType = $data['action_type'];
             $happenedAt = $data['happened_at'];
             $method = match ($actionType) {
@@ -119,7 +118,7 @@ class ListDebts extends ListRecords
                 $this->makeInterestTransaction(debt: $debt, amount: $amount, actionType: $actionType, happenedAt: $happenedAt);
             }
 
-            if(!blank($method)) {
+            if (! blank($method)) {
                 $wallet = Wallet::findOrFail($data['wallet_id']);
                 $wallet->{$method}($amount * 100, [
                     'happened_at' => $happenedAt,
@@ -162,7 +161,7 @@ class ListDebts extends ListRecords
             'confirmed' => true,
             'meta' => [
                 'action_type' => $actionType,
-            ]
+            ],
         ]);
     }
 }

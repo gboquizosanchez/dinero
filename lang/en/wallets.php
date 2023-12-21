@@ -27,10 +27,10 @@ return [
         'exclude' => [
             'title' => 'Exclude',
             'help_text' => 'Ignore this balance of this wallet on the total balance',
-        ]
+        ],
     ],
     'types' => [
         WalletTypeEnum::GENERAL->value => 'General',
         WalletTypeEnum::CREDIT_CARD->value => 'Credit Card',
-    ]
+    ],
 ];

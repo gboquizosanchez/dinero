@@ -1,8 +1,6 @@
 <?php
 
 use App\Enums\BudgetPeriodEnum;
-use App\Enums\SpendTypeEnum;
-use App\Enums\VisibilityStatusEnum;
 
 return [
     'title' => 'Budgets',
@@ -25,9 +23,9 @@ return [
         'enabled_help_text' => 'Show this budget on the dashboard or report',
     ],
     'periods' => [
-        BudgetPeriodEnum::WEEKLY->value    => 'Weekly',
-        BudgetPeriodEnum::MONTHLY->value   => 'Monthly',
+        BudgetPeriodEnum::WEEKLY->value => 'Weekly',
+        BudgetPeriodEnum::MONTHLY->value => 'Monthly',
         BudgetPeriodEnum::QUARTERLY->value => 'Quarterly',
-        BudgetPeriodEnum::YEARLY->value    => 'Yearly',
+        BudgetPeriodEnum::YEARLY->value => 'Yearly',
     ],
 ];

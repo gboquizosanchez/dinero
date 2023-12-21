@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Enums\DebtTypeEnum;
 use App\Filament\Resources\DebtResource\Pages;
-use App\Filament\Resources\DebtResource\RelationManagers;
 use App\Filament\Resources\DebtResource\RelationManagers\TransactionsRelationManager;
 use App\Models\Debt;
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
@@ -87,7 +86,7 @@ class DebtResource extends Resource
                             DebtTypeEnum::RECEIVABLE->value => 'success',
                         };
                     })
-                    ->formatStateUsing(fn(string $state) => __('debts.types.' . $state))
+                    ->formatStateUsing(fn (string $state) => __('debts.types.'.$state))
                     ->label(__('debts.fields.type'))
                     ->sortable(),
                 TextColumn::make('name')
@@ -101,7 +100,7 @@ class DebtResource extends Resource
                     ->label(__('goals.fields.balance'))
                     ->suffixBadges([
                         Badge::make('progress')
-                            ->label(fn(Model $record) => $record->progress. '%')
+                            ->label(fn (Model $record) => $record->progress.'%'),
                     ]),
                 TextColumn::make('wallet.name')
                     ->label(__('debts.fields.initial_wallet'))
@@ -125,13 +124,13 @@ class DebtResource extends Resource
                     ->label(__('debts.actions.debt_transaction'))
                     ->color('danger')
                     ->icon('lucide-trending-up')
-                    ->form(function(Debt $debt){
+                    ->form(function (Debt $debt) {
                         return (new Pages\ListDebts())->getDebtTransactionFields(debtId: $debt->id);
                     })
                     ->action(function (array $data) {
                         (new Pages\ListDebts())->makeDebtTransaction($data);
                     })
-                    ->visible(fn(Debt $debt) => $debt->progress < 100),
+                    ->visible(fn (Debt $debt) => $debt->progress < 100),
                 Tables\Actions\EditAction::make()->slideOver(),
             ])
             ->bulkActions([
@@ -143,20 +142,20 @@ class DebtResource extends Resource
                 Tables\Actions\CreateAction::make()->slideOver(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             TransactionsRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListDebts::route('/'),
-//            'create' => Pages\CreateDebt::route('/create'),
-//            'edit' => Pages\EditDebt::route('/{record}/edit'),
+            //            'create' => Pages\CreateDebt::route('/create'),
+            //            'edit' => Pages\EditDebt::route('/{record}/edit'),
         ];
-    }    
+    }
 }

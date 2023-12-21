@@ -32,7 +32,7 @@ class Budget extends Model
     public function spendAmount(): Attribute
     {
         return Attribute::make(
-            get: function() {
+            get: function () {
                 return $this->categories->sum('balance');
             }
         );

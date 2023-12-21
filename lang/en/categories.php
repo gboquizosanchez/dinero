@@ -16,15 +16,15 @@ return [
         'is_visible_help_text' => 'Ignore this category on the total balance and not showing on the transaction list',
     ],
     'types' => [
-        SpendTypeEnum::INCOME->value   => [
+        SpendTypeEnum::INCOME->value => [
             'id' => SpendTypeEnum::INCOME->value,
             'label' => 'Income',
             'description' => 'your income category',
         ],
-        SpendTypeEnum::EXPENSE->value   => [
+        SpendTypeEnum::EXPENSE->value => [
             'id' => SpendTypeEnum::EXPENSE->value,
             'label' => 'Expense',
             'description' => 'your expense category',
         ],
-    ]
+    ],
 ];

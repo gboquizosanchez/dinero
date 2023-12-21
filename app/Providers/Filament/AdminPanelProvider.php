@@ -42,8 +42,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-//                Widgets\AccountWidget::class,
-//                Widgets\FilamentInfoWidget::class,
+                //                Widgets\AccountWidget::class,
+                //                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -71,10 +71,11 @@ class AdminPanelProvider extends PanelProvider
             ->tenant(model: Account::class, slugAttribute: 'id', ownershipRelationship: 'owner')
             ->tenantRegistration(RegisterAccount::class)
             ->tenantProfile(EditAccountProfile::class)
-            ->renderHook( 'panels::content.start', function () {
-                if(config('app.demo')) {
+            ->renderHook('panels::content.start', function () {
+                if (config('app.demo')) {
                     return view('banner');
                 }
+
                 return null;
             })
             ->databaseNotifications()

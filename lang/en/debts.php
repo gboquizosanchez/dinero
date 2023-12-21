@@ -31,13 +31,13 @@ return [
     'action_types' => [
         DebtTypeEnum::RECEIVABLE->value => [
             DebtActionTypeEnum::DEBT_COLLECTION->value => 'Debt Collection',
-            DebtActionTypeEnum::LOAN_INCREASE->value   => 'Loan Increase',
-            DebtActionTypeEnum::LOAN_INTEREST->value   => 'Interest',
+            DebtActionTypeEnum::LOAN_INCREASE->value => 'Loan Increase',
+            DebtActionTypeEnum::LOAN_INTEREST->value => 'Interest',
         ],
         DebtTypeEnum::PAYABLE->value => [
-            DebtActionTypeEnum::REPAYMENT->value     => 'Repayment',
+            DebtActionTypeEnum::REPAYMENT->value => 'Repayment',
             DebtActionTypeEnum::DEBT_INCREASE->value => 'Debt Increase',
             DebtActionTypeEnum::DEBT_INTEREST->value => 'Interest',
         ],
-    ]
+    ],
 ];

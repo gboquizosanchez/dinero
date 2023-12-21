@@ -10,8 +10,6 @@ class TransactionChart extends ApexChartWidget
 {
     /**
      * Chart Id
-     *
-     * @var string
      */
     protected static string $chartId = 'transactionChart';
 
@@ -21,16 +19,12 @@ class TransactionChart extends ApexChartWidget
 
     /**
      * Widget Title
-     *
-     * @var string|null
      */
     protected static ?string $heading = 'Transactions';
 
     /**
      * Chart options (series, labels, types, size, animations...)
      * https://apexcharts.com/docs/options
-     *
-     * @return array
      */
     protected function getOptions(): array
     {
@@ -43,7 +37,7 @@ class TransactionChart extends ApexChartWidget
                 },
                 function ($item) {
                     return $item->type;
-                }
+                },
             ])
             ->map(function ($item) {
                 return $item->map(function ($item) {
@@ -64,11 +58,11 @@ class TransactionChart extends ApexChartWidget
             'series' => [
                 [
                     'name' => 'Deposit',
-                    'data' => $transactions->pluck('deposit')->toArray()
+                    'data' => $transactions->pluck('deposit')->toArray(),
                 ],
                 [
                     'name' => 'Withdrawal',
-                    'data' => $transactions->pluck('withdraw')->toArray()
+                    'data' => $transactions->pluck('withdraw')->toArray(),
                 ],
             ],
             'plotOptions' => [
@@ -78,7 +72,7 @@ class TransactionChart extends ApexChartWidget
                 ],
             ],
             'dataLabels' => [
-                'enabled' => false
+                'enabled' => false,
             ],
             'legend' => [
                 'show' => true,
@@ -90,11 +84,11 @@ class TransactionChart extends ApexChartWidget
                     'width' => 12,
                     'radius' => 12,
                     'offsetX' => -3,
-                    'offsetY' => 2
+                    'offsetY' => 2,
                 ],
                 'itemMargin' => [
-                    'horizontal' => 5
-                ]
+                    'horizontal' => 5,
+                ],
             ],
             'grid' => [
                 'show' => false,
@@ -106,22 +100,22 @@ class TransactionChart extends ApexChartWidget
                 })->toArray(),
                 'labels' => [
                     'style' => [
-                        'fontFamily' => 'inherit'
-                    ]
+                        'fontFamily' => 'inherit',
+                    ],
                 ],
                 'axisTicks' => [
-                    'show' => false
+                    'show' => false,
                 ],
                 'axisBorder' => [
-                    'show' => false
-                ]
+                    'show' => false,
+                ],
             ],
             'yaxis' => [
                 'offsetX' => -16,
                 'labels' => [
                     'style' => [
-                        'fontFamily' => 'inherit'
-                    ]
+                        'fontFamily' => 'inherit',
+                    ],
                 ],
                 'min' => -200,
                 'max' => 300,
@@ -142,7 +136,7 @@ class TransactionChart extends ApexChartWidget
             'stroke' => [
                 'curve' => 'smooth',
                 'width' => 1,
-                'lineCap' => 'round'
+                'lineCap' => 'round',
             ],
             'colors' => ['#f59e0b', '#ea580c'],
         ];

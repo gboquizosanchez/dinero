@@ -5,13 +5,12 @@ namespace App\Filament\Widgets;
 use App\Filament\Resources\TransactionResource;
 use App\Models\Transaction;
 use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 
 class LatestTransaction extends TableWidget
 {
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     protected static ?int $sort = 3;
 

@@ -24,18 +24,18 @@ class CreateTransaction extends CreateRecord
         $data['amount'] *= 100;
 
         $type = ($data['type'] ?? null);
-        if($type == TransactionTypeEnum::WITHDRAW->value) {
+        if ($type == TransactionTypeEnum::WITHDRAW->value) {
             $data['amount'] = $data['amount'] * -1;
             try {
                 $this->validateCreditLimit($data);
             } catch (InsufficientFunds $exception) {
                 Notification::make()
                     ->danger()
-                    ->title("Insufficient funds")
+                    ->title('Insufficient funds')
                     ->send();
                 $this->halt();
             }
-        } elseif(in_array($type, [TransactionTypeEnum::TRANSFER->value, TransactionTypeEnum::PAYMENT->value])) {
+        } elseif (in_array($type, [TransactionTypeEnum::TRANSFER->value, TransactionTypeEnum::PAYMENT->value])) {
             $this->createTransferOrPaymentTransaction($data);
             $this->sendCreatedNotificationAndRedirect(shouldCreateAnotherInsteadOfRedirecting: false);
             $this->halt();
@@ -50,13 +50,13 @@ class CreateTransaction extends CreateRecord
     public function validateCreditLimit($data): void
     {
         $wallet = Wallet::findOrFail($data['wallet_id']);
-        $amount = (double) $wallet->balance + ($data['amount']);
+        $amount = (float) $wallet->balance + ($data['amount']);
 
         $amount = $amount / 100; // cents to dollars
 
-        if($wallet->type == WalletTypeEnum::CREDIT_CARD->value) {
-            $creditLimit = -1 * (double) array_get($wallet->meta, 'credit');
-            if($amount < $creditLimit) {
+        if ($wallet->type == WalletTypeEnum::CREDIT_CARD->value) {
+            $creditLimit = -1 * (float) array_get($wallet->meta, 'credit');
+            if ($amount < $creditLimit) {
                 throw new InsufficientFunds('Insufficient funds');
             }
         }
@@ -68,9 +68,9 @@ class CreateTransaction extends CreateRecord
         $toWallet = Wallet::findOrFail($data['to_wallet_id']);
         $meta = ['happened_at' => $data['happened_at'] ?? now(), 'type' => $data['type']];
 
-        if(array_get($data, 'type') == TransactionTypeEnum::PAYMENT->value) {
+        if (array_get($data, 'type') == TransactionTypeEnum::PAYMENT->value) {
             $meta['payment'] = true;
-        }elseif (array_get($data, 'type') == TransactionTypeEnum::TRANSFER->value) {
+        } elseif (array_get($data, 'type') == TransactionTypeEnum::TRANSFER->value) {
             $meta['transfer'] = true;
         }
 

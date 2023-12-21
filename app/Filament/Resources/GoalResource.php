@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GoalResource\Pages;
-use App\Filament\Resources\GoalResource\RelationManagers;
 use App\Filament\Resources\GoalResource\RelationManagers\TransactionsRelationManager;
 use App\Models\Goal;
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
@@ -86,7 +85,7 @@ class GoalResource extends Resource
                     ->label(__('goals.fields.balance'))
                     ->suffixBadges([
                         Badge::make('progress')
-                            ->label(fn(Model $record) => $record->progress. '%')
+                            ->label(fn (Model $record) => $record->progress.'%'),
                     ]),
                 TextColumn::make('target_date')
                     ->label(__('goals.fields.target_date'))
@@ -122,7 +121,7 @@ class GoalResource extends Resource
                     ->label(__('goals.actions.deposit'))
                     ->icon('lucide-trending-up')
                     ->color('danger')
-                    ->form(function(Goal $goal){
+                    ->form(function (Goal $goal) {
                         return (new Pages\ListGoals())->getGoalTransactionFields(goalId: $goal->id);
                     })
                     ->action(function (array $data) {
@@ -132,7 +131,7 @@ class GoalResource extends Resource
                     ->label(__('goals.actions.withdraw'))
                     ->icon('lucide-trending-down')
                     ->color('warning')
-                    ->form(function(Goal $goal){
+                    ->form(function (Goal $goal) {
                         return (new Pages\ListGoals())->getGoalTransactionFields(
                             type: 'withdraw',
                             goalId: $goal->id
@@ -152,20 +151,20 @@ class GoalResource extends Resource
                 Tables\Actions\CreateAction::make()->slideOver(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             TransactionsRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListGoals::route('/'),
-//            'create' => Pages\CreateGoal::route('/create'),
-//            'edit' => Pages\EditGoal::route('/{record}/edit'),
+            //            'create' => Pages\CreateGoal::route('/create'),
+            //            'edit' => Pages\EditGoal::route('/{record}/edit'),
         ];
-    }    
+    }
 }
