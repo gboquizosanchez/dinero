@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\SpendTypeEnum;
 use App\Enums\VisibilityStatusEnum;
 use App\Models\Account;

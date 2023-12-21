@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GoalResource\Pages;
@@ -85,7 +87,7 @@ class GoalResource extends Resource
                     ->label(__('goals.fields.balance'))
                     ->suffixBadges([
                         Badge::make('progress')
-                            ->label(fn (Model $record) => $record->progress.'%'),
+                            ->label(fn (Model $record) => $record->progress . '%'),
                     ]),
                 TextColumn::make('target_date')
                     ->label(__('goals.fields.target_date'))

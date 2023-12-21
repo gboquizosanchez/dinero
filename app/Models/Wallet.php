@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\WalletTypeEnum;
@@ -13,7 +15,7 @@ use Shipu\Watchable\Traits\WatchableTrait;
 
 class Wallet extends BaseWallet
 {
-    use HasFactory, WatchableTrait, SoftDeletes;
+    use HasFactory, SoftDeletes, WatchableTrait;
 
     protected $fillable = [
         'holder_type',

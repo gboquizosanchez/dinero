@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
 use App\Enums\SpendTypeEnum;
@@ -140,7 +142,7 @@ class TransactionResource extends Resource
                                     TransactionTypeEnum::DEPOSIT->value => SpendTypeEnum::INCOME->value,
                                     default => null,
                                 };
-                                if (! is_null($spendType)) {
+                                if ($spendType !== null) {
                                     return $query->tenant()->where('type', $spendType);
                                 }
 
@@ -271,7 +273,7 @@ class TransactionResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns((new TransactionResource())->tableColumns())
+            ->columns((new self())->tableColumns())
             ->filters([
                 Tables\Filters\SelectFilter::make('type')
                     ->options(collect(__('transactions.types'))->except([TransactionTypeEnum::TRANSFER->value])->pluck('label', 'id')->toArray()),

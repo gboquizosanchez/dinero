@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\DebtTypeEnum;
@@ -97,7 +99,7 @@ class Debt extends Model
 
     public function onModelCreated(): void
     {
-        $meta = ['reference_type' => Debt::class, 'reference_id' => $this->id, 'account_id' => $this->account_id];
+        $meta = ['reference_type' => self::class, 'reference_id' => $this->id, 'account_id' => $this->account_id];
         $method = match ($this->type) {
             DebtTypeEnum::RECEIVABLE->value => 'withdraw',
             DebtTypeEnum::PAYABLE->value => 'deposit',
@@ -111,7 +113,7 @@ class Debt extends Model
 
     public function onModelUpdating(): void
     {
-        $meta = ['reference_type' => Debt::class, 'reference_id' => $this->id];
+        $meta = ['reference_type' => self::class, 'reference_id' => $this->id];
         $delta = $this->amount - $this->getOriginal('amount');
         $method = null;
 

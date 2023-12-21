@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Transformer;
 
 use Bavix\Wallet\Internal\Dto\TransactionDtoInterface;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\DebtResource\Pages;
 
 use App\Enums\DebtActionTypeEnum;
@@ -63,11 +65,11 @@ class ListDebts extends ListRecords
         return [
             Hidden::make('debt_id')
                 ->default($debtId)
-                ->visible(fn () => ! is_null($debtId)),
+                ->visible(fn () => $debtId !== null),
             Select::make('debt_id')
                 ->label(__('debts.fields.debt'))
                 ->options(Debt::tenant()->pluck('name', 'id')->toArray())
-                ->visible(fn () => is_null($debtId))
+                ->visible(fn () => $debtId === null)
                 ->searchable()
                 ->live()
                 ->required(),
@@ -80,7 +82,7 @@ class ListDebts extends ListRecords
 
                     $debt = Debt::findOrFail($get('debt_id'));
 
-                    return __('debts.action_types.'.$debt->type);
+                    return __('debts.action_types.' . $debt->type);
                 })
                 ->searchable(fn (Get $get) => ! blank($get('debt_id')))
                 ->live()

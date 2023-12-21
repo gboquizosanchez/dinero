@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
 use App\Enums\DebtTypeEnum;
@@ -86,7 +88,7 @@ class DebtResource extends Resource
                             DebtTypeEnum::RECEIVABLE->value => 'success',
                         };
                     })
-                    ->formatStateUsing(fn (string $state) => __('debts.types.'.$state))
+                    ->formatStateUsing(fn (string $state) => __('debts.types.' . $state))
                     ->label(__('debts.fields.type'))
                     ->sortable(),
                 TextColumn::make('name')
@@ -100,7 +102,7 @@ class DebtResource extends Resource
                     ->label(__('goals.fields.balance'))
                     ->suffixBadges([
                         Badge::make('progress')
-                            ->label(fn (Model $record) => $record->progress.'%'),
+                            ->label(fn (Model $record) => $record->progress . '%'),
                     ]),
                 TextColumn::make('wallet.name')
                     ->label(__('debts.fields.initial_wallet'))

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\MonthEnum;
 use App\Enums\QuarterEnum;
 use App\Enums\VisibilityStatusEnum;

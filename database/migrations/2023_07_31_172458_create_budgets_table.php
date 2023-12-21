@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\BudgetPeriodEnum;
 use App\Models\Account;
 use Illuminate\Database\Migrations\Migration;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Enums\WalletTypeEnum;
@@ -51,7 +53,7 @@ class WalletSeeder extends Seeder
                 }
 
                 $wallet['account_id'] = $account->id;
-                $wallet['slug'] = strtolower($wallet['name']).($key != 0 ? '-'.($key + 1) : '');
+                $wallet['slug'] = strtolower($wallet['name']) . ($key != 0 ? '-' . ($key + 1) : '');
                 $user->createWallet($wallet);
             }
         }

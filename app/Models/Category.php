@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -15,7 +17,7 @@ use Shipu\Watchable\Traits\WatchableTrait;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes, WatchableTrait, Sluggable;
+    use HasFactory, Sluggable, SoftDeletes, WatchableTrait;
 
     protected $fillable = [
         'name',

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\GoalResource\Pages;
 
 use App\Filament\Resources\GoalResource;
@@ -47,11 +49,11 @@ class ListGoals extends ListRecords
                 ->default($type),
             Hidden::make('goal_id')
                 ->default($goalId)
-                ->visible(fn () => ! is_null($goalId)),
+                ->visible(fn () => $goalId !== null),
             Select::make('goal_id')
                 ->label(__('goals.fields.goal'))
                 ->options(Goal::tenant()->pluck('name', 'id')->toArray())
-                ->visible(fn () => is_null($goalId))
+                ->visible(fn () => $goalId === null)
                 ->searchable()
                 ->required(),
             Select::make('wallet_id')

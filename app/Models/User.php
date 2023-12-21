@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -25,9 +27,9 @@ use Illuminate\Support\Collection;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements HasAvatar, HasTenants, HasDefaultTenant, WalletContract, WalletFloat, FilamentUser
+class User extends Authenticatable implements FilamentUser, HasAvatar, HasDefaultTenant, HasTenants, WalletContract, WalletFloat
 {
-    use HasWallet, HasWalletFloat, HasWallets, HasApiTokens, HasFactory, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
+    use HasApiTokens, HasFactory, HasWallet, HasWalletFloat, HasWallets, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.

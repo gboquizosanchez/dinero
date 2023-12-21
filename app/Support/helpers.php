@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Collection;
 
 function country_with_currency_and_symbol($state = null): Collection|string
