@@ -1,8 +1,10 @@
-/.phpunit.cache
+# Laravel default
 /node_modules
 /public/build
 /public/hot
 /public/storage
+/public/css/filament
+/public/js/filament
 /storage/*.key
 /vendor
 .env
@@ -14,8 +16,25 @@ Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
-/.fleet
+
+# IDE and Text editors
 /.idea
 /.vscode
-supervisord.log
-supervisord.pid
+/.fleet
+/.scribe
+
+# SonarQube
+/.scannerwork
+
+# IDE Helper
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+
+# PHP CS Fixer
+.php-cs-fixer.cache
+.DS_Store
+
+# Others
+i18nally.json
+phpstan-report.json
