@@ -9,6 +9,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Version of the code
+    |--------------------------------------------------------------------------
+    |
+    | This value is the tagged last version of your application.
+    | This value is used in asset in order to avoid cache between the
+    | different version of the code. It's not set automatically yet.
+    |
+    */
+
+    'version' => env('APP_VERSION', '0.0.1'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
     |
@@ -85,7 +98,7 @@ return [
     |
     */
 
-    'locale' => 'es',
+    'locale' => env('APP_LOCALE', 'es'),
 
     /*
     |--------------------------------------------------------------------------
@@ -111,7 +124,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => env('APP_FAKER_LOCALE', 'es_ES'),
 
     /*
     |--------------------------------------------------------------------------
@@ -165,12 +178,13 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\Filament\AdminPanelProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Laravel\Providers\AppServiceProvider::class,
+        Laravel\Providers\AuthServiceProvider::class,
+        Laravel\Providers\EventServiceProvider::class,
+        Laravel\Providers\RouteServiceProvider::class,
+        Laravel\Providers\MixinServiceProvider::class,
+
+        Filament\Providers\TakaPanelServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -187,7 +201,5 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
-
-    'demo' => env('APP_DEMO', false),
 
 ];

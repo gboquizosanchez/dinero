@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Enums\WalletTypeEnum;
+use Taka\Support\Enums\WalletTypeEnum;
 
 return [
     'title' => 'Wallets',
@@ -32,7 +32,7 @@ return [
         ],
     ],
     'types' => [
-        WalletTypeEnum::GENERAL->value => 'General',
-        WalletTypeEnum::CREDIT_CARD->value => 'Credit Card',
+        WalletTypeEnum::GENERAL() => 'General',
+        WalletTypeEnum::CREDIT_CARD() => 'Credit Card',
     ],
 ];

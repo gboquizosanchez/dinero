@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Enums\DebtActionTypeEnum;
-use App\Enums\DebtTypeEnum;
+use Taka\Support\Enums\DebtActionTypeEnum;
+use Taka\Support\Enums\DebtTypeEnum;
 
 return [
     'title' => 'Debts',
@@ -27,19 +27,19 @@ return [
         'total_debt_amount' => 'Total Debt Amount',
     ],
     'types' => [
-        DebtTypeEnum::PAYABLE->value => 'Payable',
-        DebtTypeEnum::RECEIVABLE->value => 'Receivable',
+        DebtTypeEnum::PAYABLE() => 'Payable',
+        DebtTypeEnum::RECEIVABLE() => 'Receivable',
     ],
     'action_types' => [
-        DebtTypeEnum::RECEIVABLE->value => [
-            DebtActionTypeEnum::DEBT_COLLECTION->value => 'Debt Collection',
-            DebtActionTypeEnum::LOAN_INCREASE->value => 'Loan Increase',
-            DebtActionTypeEnum::LOAN_INTEREST->value => 'Interest',
+        DebtTypeEnum::RECEIVABLE() => [
+            DebtActionTypeEnum::DEBT_COLLECTION() => 'Debt Collection',
+            DebtActionTypeEnum::LOAN_INCREASE() => 'Loan Increase',
+            DebtActionTypeEnum::LOAN_INTEREST() => 'Interest',
         ],
-        DebtTypeEnum::PAYABLE->value => [
-            DebtActionTypeEnum::REPAYMENT->value => 'Repayment',
-            DebtActionTypeEnum::DEBT_INCREASE->value => 'Debt Increase',
-            DebtActionTypeEnum::DEBT_INTEREST->value => 'Interest',
+        DebtTypeEnum::PAYABLE() => [
+            DebtActionTypeEnum::REPAYMENT() => 'Repayment',
+            DebtActionTypeEnum::DEBT_INCREASE() => 'Debt Increase',
+            DebtActionTypeEnum::DEBT_INTEREST() => 'Interest',
         ],
     ],
 ];

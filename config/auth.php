@@ -64,7 +64,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => Taka\Domain\Models\User::class,
         ],
 
         // 'users' => [
@@ -113,5 +113,18 @@ return [
     */
 
     'password_timeout' => 10800,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Allowed list
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the ips allowed to enter the application.
+    | By default, not allowed any ip, so, it is necessary to establish
+    | this variable properly.
+    |
+    */
+
+    'allowed_list' => explode(',', env('APP_ALLOWED_LIST', ',')),
 
 ];

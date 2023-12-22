@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Enums\BudgetPeriodEnum;
+use Taka\Support\Enums\BudgetPeriodEnum;
 
 return [
     'title' => 'Budgets',
@@ -25,9 +25,9 @@ return [
         'enabled_help_text' => 'Show this budget on the dashboard or report',
     ],
     'periods' => [
-        BudgetPeriodEnum::WEEKLY->value => 'Weekly',
-        BudgetPeriodEnum::MONTHLY->value => 'Monthly',
-        BudgetPeriodEnum::QUARTERLY->value => 'Quarterly',
-        BudgetPeriodEnum::YEARLY->value => 'Yearly',
+        BudgetPeriodEnum::WEEKLY() => 'Weekly',
+        BudgetPeriodEnum::MONTHLY() => 'Monthly',
+        BudgetPeriodEnum::QUARTERLY() => 'Quarterly',
+        BudgetPeriodEnum::YEARLY() => 'Yearly',
     ],
 ];

@@ -4,19 +4,16 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Enums\SpendTypeEnum;
-use App\Enums\TransactionTypeEnum;
-use App\Enums\WalletTypeEnum;
-use App\Models\Account;
-use App\Models\Transaction;
-use App\Models\User;
 use Illuminate\Database\Seeder;
+use Taka\Domain\Models\Account;
+use Taka\Domain\Models\Transaction;
+use Taka\Domain\Models\User;
+use Taka\Support\Enums\SpendTypeEnum;
+use Taka\Support\Enums\TransactionTypeEnum;
+use Taka\Support\Enums\WalletTypeEnum;
 
-class TransactionSeeder extends Seeder
+final class TransactionSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $accounts = Account::all();
@@ -27,7 +24,7 @@ class TransactionSeeder extends Seeder
         //            'payable_id' => 1,
         //            'account_id'  => '01H7BGYYATNB2QY0KBCY60T4VH',
         //            'amount'      => rand(500, 10000),
-        //            'type'        => TransactionTypeEnum::DEPOSIT->value,
+        //            'type'        => TransactionTypeEnum::DEPOSIT(),
         //            'category_id' => 1,
         //            'confirmed' => true,
         //            'uuid' => fake()->uuid,
@@ -38,11 +35,11 @@ class TransactionSeeder extends Seeder
             $wallets = $account->wallets;
             $categories = $account->categories;
 
-            foreach ($wallets->where('type', WalletTypeEnum::GENERAL->value) as $wallet) {
+            foreach ($wallets->where('type', WalletTypeEnum::GENERAL()) as $wallet) {
                 $incomeCategories = $categories->where('type',
-                    SpendTypeEnum::INCOME->value);
+                    SpendTypeEnum::INCOME());
                 $expenseCategories = $categories->where('type',
-                    SpendTypeEnum::EXPENSE->value);
+                    SpendTypeEnum::EXPENSE());
 
                 foreach (range(0, 20) as $i) {
                     Transaction::insert([
@@ -51,8 +48,8 @@ class TransactionSeeder extends Seeder
                             'payable_type' => User::class,
                             'payable_id' => 1,
                             'account_id' => $account->id,
-                            'amount' => rand(500, 10000),
-                            'type' => TransactionTypeEnum::DEPOSIT->value,
+                            'amount' => random_int(500, 10000),
+                            'type' => TransactionTypeEnum::DEPOSIT(),
                             'category_id' => $incomeCategories->random()->id,
                             'confirmed' => true,
                             'uuid' => fake()->uuid,
@@ -63,8 +60,8 @@ class TransactionSeeder extends Seeder
                             'payable_type' => User::class,
                             'payable_id' => 1,
                             'account_id' => $account->id,
-                            'amount' => rand(500, 10000),
-                            'type' => TransactionTypeEnum::DEPOSIT->value,
+                            'amount' => random_int(500, 10000),
+                            'type' => TransactionTypeEnum::DEPOSIT(),
                             'category_id' => $incomeCategories->random()->id,
                             'confirmed' => true,
                             'uuid' => fake()->uuid,
@@ -75,8 +72,8 @@ class TransactionSeeder extends Seeder
                             'payable_type' => User::class,
                             'payable_id' => 1,
                             'account_id' => $account->id,
-                            'amount' => -1 * rand(500, 1000),
-                            'type' => TransactionTypeEnum::WITHDRAW->value,
+                            'amount' => -1 * random_int(500, 1000),
+                            'type' => TransactionTypeEnum::WITHDRAW(),
                             'category_id' => $expenseCategories->random()->id,
                             'confirmed' => true,
                             'uuid' => fake()->uuid,
@@ -87,8 +84,8 @@ class TransactionSeeder extends Seeder
                             'payable_type' => User::class,
                             'payable_id' => 1,
                             'account_id' => $account->id,
-                            'amount' => -1 * rand(500, 1000),
-                            'type' => TransactionTypeEnum::WITHDRAW->value,
+                            'amount' => -1 * random_int(500, 1000),
+                            'type' => TransactionTypeEnum::WITHDRAW(),
                             'category_id' => $expenseCategories->random()->id,
                             'confirmed' => true,
                             'uuid' => fake()->uuid,
@@ -99,8 +96,8 @@ class TransactionSeeder extends Seeder
                             'payable_type' => User::class,
                             'payable_id' => 1,
                             'account_id' => $account->id,
-                            'amount' => -1 * rand(500, 1000),
-                            'type' => TransactionTypeEnum::WITHDRAW->value,
+                            'amount' => -1 * random_int(500, 1000),
+                            'type' => TransactionTypeEnum::WITHDRAW(),
                             'category_id' => $expenseCategories->random()->id,
                             'confirmed' => true,
                             'uuid' => fake()->uuid,

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Enums\MonthEnum;
-use App\Enums\QuarterEnum;
-use App\Enums\VisibilityStatusEnum;
-use App\Enums\WeekdayEnum;
+use Taka\Support\Enums\MonthEnum;
+use Taka\Support\Enums\QuarterEnum;
+use Taka\Support\Enums\VisibilityStatusEnum;
+use Taka\Support\Enums\WeekdayEnum;
 
 return [
     'visibility_statuses' => [

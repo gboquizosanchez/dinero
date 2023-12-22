@@ -2,35 +2,26 @@
 
 declare(strict_types=1);
 
-use App\Models\Account;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Taka\Domain\Models\Account;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    final public function up(): void
     {
-        Schema::create('goals', function (Blueprint $table) {
+        Schema::create('goals', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignIdFor(Account::class)->constrained((new Account())->getTable())->cascadeOnDelete();
+            $table->foreignIdFor(Account::class)
+                ->constrained(Account::newModelInstance()->getTable())
+                ->cascadeOnDelete();
             $table->unsignedDecimal('amount', 64, 0)->default(0);
             $table->timestamp('target_date')->nullable();
             $table->string('color')->nullable();
-            $table->string('currency_code')->default('USD');
+            $table->string('currency_code')->default('EUR');
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('goals');
     }
 };

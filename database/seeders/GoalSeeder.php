@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Account;
-use App\Models\Goal;
 use Illuminate\Database\Seeder;
+use Taka\Domain\Models\Account;
+use Taka\Domain\Models\Goal;
 
-class GoalSeeder extends Seeder
+final class GoalSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Goal::insert([
@@ -22,7 +19,7 @@ class GoalSeeder extends Seeder
                 'target_date' => now()->addYears(2),
                 'account_id' => Account::first()->id,
                 'color' => '#22b3e0',
-                'currency_code' => 'BDT',
+                'currency_code' => 'EUR',
             ],
             [
                 'name' => 'Buy a new house',
@@ -30,7 +27,7 @@ class GoalSeeder extends Seeder
                 'target_date' => now()->addYears(5),
                 'account_id' => Account::first()->id,
                 'color' => '#224ce0',
-                'currency_code' => 'BDT',
+                'currency_code' => 'EUR',
             ],
             [
                 'name' => 'Buy a new laptop',
@@ -38,7 +35,7 @@ class GoalSeeder extends Seeder
                 'target_date' => now()->addMonths(6),
                 'account_id' => Account::first()->id,
                 'color' => '#e07222',
-                'currency_code' => 'BDT',
+                'currency_code' => 'EUR',
             ],
             [
                 'name' => 'Buy a new phone',
@@ -46,7 +43,7 @@ class GoalSeeder extends Seeder
                 'target_date' => now()->addMonths(3),
                 'account_id' => Account::first()->id,
                 'color' => '#22a1e0',
-                'currency_code' => 'BDT',
+                'currency_code' => 'EUR',
             ],
         ]);
     }

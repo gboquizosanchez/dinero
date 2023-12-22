@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Enums\SpendTypeEnum;
+use Taka\Support\Enums\SpendTypeEnum;
 
 return [
     'title' => 'Categorías',

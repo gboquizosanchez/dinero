@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Transformer\FilamentTransactionDtoTransformer;
-use App\Transformer\FilamentTransferDtoTransformer;
 use Bavix\Wallet\Internal\Assembler\AvailabilityDtoAssembler;
 use Bavix\Wallet\Internal\Assembler\BalanceUpdatedEventAssembler;
 use Bavix\Wallet\Internal\Assembler\ExtraDtoAssembler;
@@ -31,9 +29,7 @@ use Bavix\Wallet\Internal\Service\StateService;
 use Bavix\Wallet\Internal\Service\StorageService;
 use Bavix\Wallet\Internal\Service\TranslatorService;
 use Bavix\Wallet\Internal\Service\UuidFactoryService;
-use Bavix\Wallet\Models\Transaction;
 use Bavix\Wallet\Models\Transfer;
-use Bavix\Wallet\Models\Wallet;
 use Bavix\Wallet\Services\AssistantService;
 use Bavix\Wallet\Services\AtmService;
 use Bavix\Wallet\Services\AtomicService;
@@ -51,6 +47,8 @@ use Bavix\Wallet\Services\TaxService;
 use Bavix\Wallet\Services\TransactionService;
 use Bavix\Wallet\Services\TransferService;
 use Bavix\Wallet\Services\WalletService;
+use Taka\Application\Transformer\FilamentTransactionDtoTransformer;
+use Taka\Application\Transformer\FilamentTransferDtoTransformer;
 
 return [
     /**
@@ -165,7 +163,7 @@ return [
      */
     'transaction' => [
         'table' => 'transactions',
-        'model' => \App\Models\Transaction::class,
+        'model' => \Taka\Domain\Models\Transaction::class,
     ],
 
     /**
@@ -181,7 +179,7 @@ return [
      */
     'wallet' => [
         'table' => 'wallets',
-        'model' => \App\Models\Wallet::class,
+        'model' => \Taka\Domain\Models\Wallet::class,
         'creating' => [],
         'default' => [
             'name' => 'Default Wallet',

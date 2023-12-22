@@ -2,42 +2,42 @@
 
 declare(strict_types=1);
 
-use App\Enums\MonthEnum;
-use App\Enums\QuarterEnum;
-use App\Enums\VisibilityStatusEnum;
-use App\Enums\WeekdayEnum;
+use Taka\Support\Enums\MonthEnum;
+use Taka\Support\Enums\QuarterEnum;
+use Taka\Support\Enums\VisibilityStatusEnum;
+use Taka\Support\Enums\WeekdayEnum;
 
 return [
     'visibility_statuses' => [
-        VisibilityStatusEnum::ACTIVE->value => 'Active',
-        VisibilityStatusEnum::INACTIVE->value => 'Inactive',
+        VisibilityStatusEnum::ACTIVE() => 'Active',
+        VisibilityStatusEnum::INACTIVE() => 'Inactive',
     ],
     'weekdays' => [
-        WeekdayEnum::SUNDAY->value => 'Sunday',
-        WeekdayEnum::MONDAY->value => 'Monday',
-        WeekdayEnum::TUESDAY->value => 'Tuesday',
-        WeekdayEnum::WEDNESDAY->value => 'Wednesday',
-        WeekdayEnum::THURSDAY->value => 'Thursday',
-        WeekdayEnum::FRIDAY->value => 'Friday',
-        WeekdayEnum::SATURDAY->value => 'Saturday',
+        WeekdayEnum::SUNDAY() => 'Sunday',
+        WeekdayEnum::MONDAY() => 'Monday',
+        WeekdayEnum::TUESDAY() => 'Tuesday',
+        WeekdayEnum::WEDNESDAY() => 'Wednesday',
+        WeekdayEnum::THURSDAY() => 'Thursday',
+        WeekdayEnum::FRIDAY() => 'Friday',
+        WeekdayEnum::SATURDAY() => 'Saturday',
     ],
     'months' => [
-        MonthEnum::JANUARY->value => 'January',
-        MonthEnum::FEBRUARY->value => 'February',
-        MonthEnum::MARCH->value => 'March',
-        MonthEnum::APRIL->value => 'April',
-        MonthEnum::MAY->value => 'May',
-        MonthEnum::JUNE->value => 'June',
-        MonthEnum::JULY->value => 'July',
-        MonthEnum::AUGUST->value => 'August',
-        MonthEnum::SEPTEMBER->value => 'September',
-        MonthEnum::OCTOBER->value => 'October',
-        MonthEnum::NOVEMBER->value => 'November',
-        MonthEnum::DECEMBER->value => 'December',
+        MonthEnum::JANUARY() => 'January',
+        MonthEnum::FEBRUARY() => 'February',
+        MonthEnum::MARCH() => 'March',
+        MonthEnum::APRIL() => 'April',
+        MonthEnum::MAY() => 'May',
+        MonthEnum::JUNE() => 'June',
+        MonthEnum::JULY() => 'July',
+        MonthEnum::AUGUST() => 'August',
+        MonthEnum::SEPTEMBER() => 'September',
+        MonthEnum::OCTOBER() => 'October',
+        MonthEnum::NOVEMBER() => 'November',
+        MonthEnum::DECEMBER() => 'December',
     ],
     'quarter_months' => [
-        QuarterEnum::FIRST_MONTH->value => 'First Month',
-        QuarterEnum::SECOND_MONTH->value => 'Second Month',
-        QuarterEnum::THIRD_MONTH->value => 'Third Month',
+        QuarterEnum::FIRST_MONTH() => 'First Month',
+        QuarterEnum::SECOND_MONTH() => 'Second Month',
+        QuarterEnum::THIRD_MONTH() => 'Third Month',
     ],
 ];

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Enums\DebtTypeEnum;
-use App\Models\Account;
-use App\Models\Debt;
-use App\Models\Wallet;
 use Illuminate\Database\Seeder;
+use Taka\Domain\Models\Account;
+use Taka\Domain\Models\Debt;
+use Taka\Domain\Models\Wallet;
+use Taka\Support\Enums\DebtTypeEnum;
 
-class DebtSeeder extends Seeder
+final class DebtSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,7 @@ class DebtSeeder extends Seeder
     public function run(): void
     {
         Debt::create([
-            'type' => DebtTypeEnum::PAYABLE->value,
+            'type' => DebtTypeEnum::PAYABLE(),
             'name' => fake()->name,
             'description' => 'Borrowed money from John Doe for buying a new car',
             'amount' => 800000,
@@ -29,7 +29,7 @@ class DebtSeeder extends Seeder
         ]);
 
         Debt::create([
-            'type' => DebtTypeEnum::RECEIVABLE->value,
+            'type' => DebtTypeEnum::RECEIVABLE(),
             'name' => fake()->name,
             'description' => 'Received money from John Doe for buying a new phone',
             'amount' => 100000,
@@ -38,6 +38,5 @@ class DebtSeeder extends Seeder
             'wallet_id' => Wallet::first()->id,
             'color' => '#22b3e0',
         ]);
-
     }
 }

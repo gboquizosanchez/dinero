@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Account;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Symfony\Component\Uid\Ulid;
+use Taka\Domain\Models\Account;
+use Taka\Domain\Models\User;
 
-class AccountSeeder extends Seeder
+final class AccountSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $user = User::first();

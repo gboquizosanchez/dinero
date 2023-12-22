@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Enums\BudgetPeriodEnum;
+use Taka\Support\Enums\BudgetPeriodEnum;
 
 return [
     'title' => 'Presupuestos',

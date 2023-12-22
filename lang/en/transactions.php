@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Enums\TransactionTypeEnum;
+use Taka\Support\Enums\TransactionTypeEnum;
 
 return [
     'title' => 'Transactions',
@@ -22,23 +22,23 @@ return [
         'attachment' => 'Attachment',
     ],
     'types' => [
-        TransactionTypeEnum::DEPOSIT->value => [
-            'id' => TransactionTypeEnum::DEPOSIT->value,
+        TransactionTypeEnum::DEPOSIT() => [
+            'id' => TransactionTypeEnum::DEPOSIT(),
             'label' => 'Deposit',
             'description' => 'Deposit to your wallet',
         ],
-        TransactionTypeEnum::WITHDRAW->value => [
-            'id' => TransactionTypeEnum::WITHDRAW->value,
+        TransactionTypeEnum::WITHDRAW() => [
+            'id' => TransactionTypeEnum::WITHDRAW(),
             'label' => 'Withdraw',
             'description' => 'Withdraw from your wallet',
         ],
-        TransactionTypeEnum::TRANSFER->value => [
-            'id' => TransactionTypeEnum::TRANSFER->value,
+        TransactionTypeEnum::TRANSFER() => [
+            'id' => TransactionTypeEnum::TRANSFER(),
             'label' => 'Transfer',
             'description' => 'Transfer between your wallets',
         ],
-        TransactionTypeEnum::PAYMENT->value => [
-            'id' => TransactionTypeEnum::PAYMENT->value,
+        TransactionTypeEnum::PAYMENT() => [
+            'id' => TransactionTypeEnum::PAYMENT(),
             'label' => 'Payment',
             'description' => 'Payment to one wallet to another wallet',
         ],

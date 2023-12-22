@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Enums\DebtActionTypeEnum;
-use App\Enums\DebtTypeEnum;
+use Taka\Support\Enums\DebtActionTypeEnum;
+use Taka\Support\Enums\DebtTypeEnum;
 
 return [
     'title' => 'Deudas',
