@@ -6,6 +6,14 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string REPAYMENT()
+ * @method static string DEBT_INCREASE()
+ * @method static string DEBT_INTEREST()
+ * @method static string LOAN_INCREASE()
+ * @method static string DEBT_COLLECTION()
+ * @method static string LOAN_INTEREST()
+ */
 enum DebtActionTypeEnum: string
 {
     use EnumTrait;

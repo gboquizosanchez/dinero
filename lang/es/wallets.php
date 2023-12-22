@@ -5,8 +5,8 @@ declare(strict_types=1);
 use Taka\Support\Enums\WalletTypeEnum;
 
 return [
-    'title' => 'Carteras',
-    'title_singular' => 'Cartera',
+    'title' => 'Monederos',
+    'title_singular' => 'Monedero',
     'actions' => [
         'refresh_balance' => 'Actualizar balance',
     ],
@@ -32,7 +32,7 @@ return [
         ],
     ],
     'types' => [
-        WalletTypeEnum::GENERAL->value => 'General',
-        WalletTypeEnum::CREDIT_CARD->value => 'Tarjeta de crédito',
+        WalletTypeEnum::GENERAL() => 'General',
+        WalletTypeEnum::CREDIT_CARD() => 'Tarjeta de crédito',
     ],
 ];

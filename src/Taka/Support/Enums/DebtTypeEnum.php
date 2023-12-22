@@ -6,6 +6,10 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string PAYABLE()
+ * @method static string RECEIVABLE()
+ */
 enum DebtTypeEnum: string
 {
     use EnumTrait;

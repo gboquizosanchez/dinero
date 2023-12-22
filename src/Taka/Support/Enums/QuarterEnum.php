@@ -6,6 +6,11 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string FIRST_MONTH()
+ * @method static string SECOND_MONTH()
+ * @method static string THIRD_MONTH()
+ */
 enum QuarterEnum: string
 {
     use EnumTrait;

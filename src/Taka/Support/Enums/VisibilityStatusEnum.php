@@ -6,6 +6,10 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string ACTIVE()
+ * @method static string INACTIVE()
+ */
 enum VisibilityStatusEnum: string
 {
     use EnumTrait;

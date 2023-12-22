@@ -6,6 +6,13 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string NONE()
+ * @method static string DAILY()
+ * @method static string WEEKLY()
+ * @method static string MONTHLY()
+ * @method static string YEARLY()
+ */
 enum RecurringTypeEnum: string
 {
     use EnumTrait;

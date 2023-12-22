@@ -6,6 +6,12 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string DEPOSIT()
+ * @method static string WITHDRAW()
+ * @method static string TRANSFER()
+ * @method static string PAYMENT()
+ */
 enum TransactionTypeEnum: string
 {
     use EnumTrait;

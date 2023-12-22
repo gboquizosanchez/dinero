@@ -6,6 +6,13 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string EXCHANGE()
+ * @method static string TRANSFER()
+ * @method static string REFUND()
+ * @method static string GIFT()
+ * @method static string PAID()
+ */
 enum TransferStatusEnum: string
 {
     use EnumTrait;

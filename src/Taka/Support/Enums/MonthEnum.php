@@ -6,6 +6,20 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string JANUARY()
+ * @method static string FEBRUARY()
+ * @method static string MARCH()
+ * @method static string APRIL()
+ * @method static string MAY()
+ * @method static string JUNE()
+ * @method static string JULY()
+ * @method static string AUGUST()
+ * @method static string SEPTEMBER()
+ * @method static string OCTOBER()
+ * @method static string NOVEMBER()
+ * @method static string DECEMBER()
+ */
 enum MonthEnum: string
 {
     use EnumTrait;

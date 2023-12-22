@@ -6,6 +6,12 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string WEEKLY()
+ * @method static string MONTHLY()
+ * @method static string QUARTERLY()
+ * @method static string YEARLY()
+ */
 enum BudgetPeriodEnum: string
 {
     use EnumTrait;

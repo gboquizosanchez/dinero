@@ -18,13 +18,13 @@ return [
         'is_visible_help_text' => 'Ignora esta categoría en el balance total y no la muestres en la lista de transacciones',
     ],
     'types' => [
-        SpendTypeEnum::INCOME->value => [
-            'id' => SpendTypeEnum::INCOME->value,
+        SpendTypeEnum::INCOME() => [
+            'id' => SpendTypeEnum::INCOME(),
             'label' => 'Ingresos',
             'description' => 'Tu categoría de ingresos',
         ],
-        SpendTypeEnum::EXPENSE->value => [
-            'id' => SpendTypeEnum::EXPENSE->value,
+        SpendTypeEnum::EXPENSE() => [
+            'id' => SpendTypeEnum::EXPENSE(),
             'label' => 'Gastos',
             'description' => 'Tu categoría de gastos',
         ],

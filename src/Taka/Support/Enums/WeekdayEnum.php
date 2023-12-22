@@ -6,6 +6,15 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string SUNDAY()
+ * @method static string MONDAY()
+ * @method static string TUESDAY()
+ * @method static string WEDNESDAY()
+ * @method static string THURSDAY()
+ * @method static string FRIDAY()
+ * @method static string SATURDAY()
+ */
 enum WeekdayEnum: string
 {
     use EnumTrait;

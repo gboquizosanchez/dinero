@@ -25,9 +25,9 @@ return [
         'enabled_help_text' => 'Mostrar este presupuesto en el tablero o informe',
     ],
     'periods' => [
-        BudgetPeriodEnum::WEEKLY->value => 'Semanal',
-        BudgetPeriodEnum::MONTHLY->value => 'Mensual',
-        BudgetPeriodEnum::QUARTERLY->value => 'Trimestral',
-        BudgetPeriodEnum::YEARLY->value => 'Anual',
+        BudgetPeriodEnum::WEEKLY() => 'Semanal',
+        BudgetPeriodEnum::MONTHLY() => 'Mensual',
+        BudgetPeriodEnum::QUARTERLY() => 'Trimestral',
+        BudgetPeriodEnum::YEARLY() => 'Anual',
     ],
 ];

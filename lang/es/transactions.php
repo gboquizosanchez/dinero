@@ -22,23 +22,23 @@ return [
         'attachment' => 'Adjunto',
     ],
     'types' => [
-        TransactionTypeEnum::DEPOSIT->value => [
-            'id' => TransactionTypeEnum::DEPOSIT->value,
+        TransactionTypeEnum::DEPOSIT() => [
+            'id' => TransactionTypeEnum::DEPOSIT(),
             'label' => 'Depósito',
             'description' => 'Depósito a tu cartera',
         ],
-        TransactionTypeEnum::WITHDRAW->value => [
-            'id' => TransactionTypeEnum::WITHDRAW->value,
+        TransactionTypeEnum::WITHDRAW() => [
+            'id' => TransactionTypeEnum::WITHDRAW(),
             'label' => 'Retirada',
             'description' => 'Retirada de tu cartera',
         ],
-        TransactionTypeEnum::TRANSFER->value => [
-            'id' => TransactionTypeEnum::TRANSFER->value,
+        TransactionTypeEnum::TRANSFER() => [
+            'id' => TransactionTypeEnum::TRANSFER(),
             'label' => 'Transferencia',
             'description' => 'Transferencia entre tus carteras',
         ],
-        TransactionTypeEnum::PAYMENT->value => [
-            'id' => TransactionTypeEnum::PAYMENT->value,
+        TransactionTypeEnum::PAYMENT() => [
+            'id' => TransactionTypeEnum::PAYMENT(),
             'label' => 'Pago',
             'description' => 'Pago de una cartera a otra cartera',
         ],

@@ -6,6 +6,10 @@ namespace Taka\Support\Enums;
 
 use Taka\Support\EnumTrait;
 
+/**
+ * @method static string INCOME()
+ * @method static string EXPENSE()
+ */
 enum SpendTypeEnum: string
 {
     use EnumTrait;

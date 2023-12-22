@@ -27,19 +27,19 @@ return [
         'total_debt_amount' => 'Cantidad total de deuda',
     ],
     'types' => [
-        DebtTypeEnum::PAYABLE->value => 'Pagable',
-        DebtTypeEnum::RECEIVABLE->value => 'Cobrable',
+        DebtTypeEnum::PAYABLE() => 'Pagable',
+        DebtTypeEnum::RECEIVABLE() => 'Cobrable',
     ],
     'action_types' => [
-        DebtTypeEnum::RECEIVABLE->value => [
-            DebtActionTypeEnum::DEBT_COLLECTION->value => 'Cobro de deuda',
-            DebtActionTypeEnum::LOAN_INCREASE->value => 'Aumento de préstamo',
-            DebtActionTypeEnum::LOAN_INTEREST->value => 'Interés',
+        DebtTypeEnum::RECEIVABLE() => [
+            DebtActionTypeEnum::DEBT_COLLECTION() => 'Cobro de deuda',
+            DebtActionTypeEnum::LOAN_INCREASE() => 'Aumento de préstamo',
+            DebtActionTypeEnum::LOAN_INTEREST() => 'Interés',
         ],
-        DebtTypeEnum::PAYABLE->value => [
-            DebtActionTypeEnum::REPAYMENT->value => 'Reembolso',
-            DebtActionTypeEnum::DEBT_INCREASE->value => 'Aumento de deuda',
-            DebtActionTypeEnum::DEBT_INTEREST->value => 'Interés',
+        DebtTypeEnum::PAYABLE() => [
+            DebtActionTypeEnum::REPAYMENT() => 'Reembolso',
+            DebtActionTypeEnum::DEBT_INCREASE() => 'Aumento de deuda',
+            DebtActionTypeEnum::DEBT_INTEREST() => 'Interés',
         ],
     ],
 ];
