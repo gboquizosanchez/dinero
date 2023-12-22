@@ -34,6 +34,24 @@ final class DebtResource extends Resource
     protected static ?int $navigationSort = 500;
 
     #[Override]
+    public static function getNavigationLabel(): string
+    {
+        return __('debts.title');
+    }
+
+    #[Override]
+    public static function getModelLabel(): string
+    {
+        return __('debts.title_singular');
+    }
+
+    #[Override]
+    public static function getPluralLabel(): ?string
+    {
+        return self::getNavigationLabel();
+    }
+
+    #[Override]
     public static function form(Form $form): Form
     {
         return $form

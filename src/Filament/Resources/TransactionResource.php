@@ -37,6 +37,24 @@ final class TransactionResource extends Resource
     protected static ?int $navigationSort = 600;
 
     #[Override]
+    public static function getNavigationLabel(): string
+    {
+        return __('transactions.title');
+    }
+
+    #[Override]
+    public static function getModelLabel(): string
+    {
+        return __('transactions.title_singular');
+    }
+
+    #[Override]
+    public static function getPluralLabel(): ?string
+    {
+        return self::getNavigationLabel();
+    }
+
+    #[Override]
     public static function form(Form $form): Form
     {
         return $form

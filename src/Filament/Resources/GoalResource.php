@@ -35,6 +35,24 @@ final class GoalResource extends Resource
     protected static ?int $navigationSort = 400;
 
     #[Override]
+    public static function getNavigationLabel(): string
+    {
+        return __('goals.title');
+    }
+
+    #[Override]
+    public static function getModelLabel(): string
+    {
+        return __('goals.title_singular');
+    }
+
+    #[Override]
+    public static function getPluralLabel(): ?string
+    {
+        return self::getNavigationLabel();
+    }
+
+    #[Override]
     public static function form(Form $form): Form
     {
         return $form
