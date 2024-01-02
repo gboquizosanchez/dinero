@@ -29,7 +29,7 @@ final class CreateTransaction extends CreateRecord
 
         $type = ($data['type'] ?? null);
         if ($type == TransactionTypeEnum::WITHDRAW()) {
-            $data['amount'] = $data['amount'] * -1;
+            $data['amount'] *= -1;
             try {
                 $this->validateCreditLimit($data);
             } catch (InsufficientFunds $exception) {
@@ -41,7 +41,6 @@ final class CreateTransaction extends CreateRecord
             }
         } elseif (in_array($type, [TransactionTypeEnum::TRANSFER(), TransactionTypeEnum::PAYMENT()])) {
             $this->createTransferOrPaymentTransaction($data);
-            $this->sendCreatedNotificationAndRedirect(shouldCreateAnotherInsteadOfRedirecting: false);
             $this->halt();
         }
 

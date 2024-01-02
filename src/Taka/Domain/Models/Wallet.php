@@ -72,10 +72,12 @@ final class Wallet extends BaseWallet
 
     public function onModelCreated(): void
     {
+
         $amount = $this->meta['initial_balance'] ?? 0;
 
-        if ($this->type == WalletTypeEnum::CREDIT_CARD()) {
+        if ($this->type === WalletTypeEnum::CREDIT_CARD()) {
             $amount = $this->meta['total_due'] ?? 0;
+
             if ($amount > 0) {
                 $this->withdraw($amount, ['description' => 'Initial credit card due']);
             }

@@ -8,12 +8,12 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Override;
 
-class EditAccountProfile extends EditTenantProfile
+final class EditAccountProfile extends EditTenantProfile
 {
     #[Override]
     public static function getLabel(): string
     {
-        return 'Account Info';
+        return __('pages.account_info');
     }
 
     #[Override]
@@ -21,7 +21,10 @@ class EditAccountProfile extends EditTenantProfile
     {
         return $form
             ->schema([
-                TextInput::make('name'),
+                TextInput::make('name')
+                    ->autofocus()
+                    ->required()
+                    ->label(__('forms.name.label')),
             ]);
     }
 }

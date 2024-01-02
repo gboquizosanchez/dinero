@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Filament\Pages\Tenancy;
 
+use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Illuminate\Database\Eloquent\Model;
@@ -28,7 +29,7 @@ final class RegisterAccount extends RegisterTenant
     #[Override]
     public static function getLabel(): string
     {
-        return 'Register Account';
+        return __('pages.register_account');
     }
 
     #[Override]
@@ -37,7 +38,8 @@ final class RegisterAccount extends RegisterTenant
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->placeholder('Personal Account'),
+                    ->label(__('forms.name.label'))
+                    ->placeholder(__('pages.personal_account')),
             ]);
     }
 
@@ -47,6 +49,9 @@ final class RegisterAccount extends RegisterTenant
     #[Override]
     protected function handleRegistration(array $data): Model
     {
-        return auth()->user()->ownedAccounts()->create($data);
+        /** @var \Taka\Domain\Models\User $user */
+        $user = Filament::auth()->user();
+
+        return $user?->ownedAccounts()->create($data);
     }
 }

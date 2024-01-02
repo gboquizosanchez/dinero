@@ -13,10 +13,12 @@ final class LoginPage extends Login
     {
         parent::mount();
 
-        $this->form->fill([
-            'email' => 'gboquizo@gmail.com',
-            'password' => '12345678',
-            'remember' => true,
-        ]);
+        if (app()->isLocal()) {
+            $this->form->fill([
+                'email' => 'gboquizo@gmail.com',
+                'password' => '12345678',
+                'remember' => true,
+            ]);
+        }
     }
 }

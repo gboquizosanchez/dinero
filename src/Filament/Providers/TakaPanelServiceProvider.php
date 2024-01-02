@@ -77,7 +77,11 @@ final class TakaPanelServiceProvider extends PanelProvider
                     ->myProfile(hasAvatars: true)
                     ->enableTwoFactorAuthentication()
             )
-            ->tenant(model: Account::class, slugAttribute: 'id', ownershipRelationship: 'owner')
+            ->tenant(
+                model: Account::class,
+                slugAttribute: 'id',
+                ownershipRelationship: 'owner',
+            )
             ->tenantRegistration(RegisterAccount::class)
             ->tenantProfile(EditAccountProfile::class)
             ->databaseNotifications()

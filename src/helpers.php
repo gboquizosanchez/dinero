@@ -21,11 +21,14 @@ function country_with_currency_and_symbol($state = null): Collection|string
             $currency = currency($country['currency']);
 
             return [
-                $country['currency'] => sprintf('%s - %s - %s (%s)',
-                    $country['name'], $currency->getCurrency(),
-                    $currency->getName(), $currency->getSymbol()),
+                $country['currency'] => sprintf(
+                    '%s - %s (%s)',
+                    $currency->getCurrency(),
+                    $currency->getName(),
+                    $currency->getSymbol()
+                ),
             ];
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return [null => null];
         }
     })->filter();
